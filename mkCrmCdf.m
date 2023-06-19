@@ -31,9 +31,11 @@ function [cOutFile] = mkCrmCdf(cInFile)
 	out.attr('Data_version') = {1};
 	out.attr('Descriptor') = {'CRM>Interference Mitigation Algorithm Validation'};
 	out.attr('Discipline') = {'Space Physics>Magnetospheric Science'};
-	out.attr('Generated_by') = {'Finley, M. - University of Iowa'};
+	out.attr('Generated_by') = {'Finley, M.G. - University of Iowa'};
 	out.attr('Instrument_type') = {'Magnetic Fields'};
-	out.attr('Logical_file_id') = {'CRM_H0_MAG_20230101_Inter1_Trend2_Phys3_V01'};
+	out.attr('Logical_file_id') = {...
+		sprintf('CRM_H0_MAG_20230101_Trend%d_Inter%d_GeoPhys%d_V01', nTrendId, nInterId, nGeoId...
+	)};
 	
 	out.attr('Text_supplemental') = {...
 		['This file is one particular combination of laboratory generated signals intended to enable '...
@@ -63,7 +65,7 @@ function [cOutFile] = mkCrmCdf(cInFile)
 	out.attr('PI_name') = {'Miles, D.'};
 	out.attr('Project') = {'Constellation Ready Mag'};
 	out.attr('Rules_of_use') = {...
-		['Site Finley, M.G. 2023 in publications that make use of this dataset.']
+		['Cite Finley, M.G. et. al. 2023 in publications that make use of this dataset or its derivatives.']
 	};
 
 	out.attr('Source_name') = {'CRM>Constellation Ready Magnetometers'};

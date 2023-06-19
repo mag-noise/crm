@@ -1,2 +1,4 @@
 mkCrmCdf.asv
 test
+*.cdf
+*.mat

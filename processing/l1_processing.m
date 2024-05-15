@@ -1,3 +1,37 @@
+%{
+    Titile: l1_processing.m
+    Date/ Version: 08 May 2025 (v0.1)
+    Author: Matthew G. Finley (NASA GSFC/University of Maryland)
+    Contact: matthew.g.finley@nasa.gov
+
+
+    Description: This MATLAB script processes level 0 data from multiple 
+        magnetometer sensors onboard a spacecraft. It performs near-DC data 
+        processing, interference data processing, and geophysical data 
+        processing. Each section of the script follows a similar pattern of
+        getting each individual measurement of the magnetometers in the
+        x, y, and z direction, filtering to remove the near-DC trend,
+        truncated to remove edge artifacts, and reformatted into matrices.
+        Time series and frequency plots are generated to confirm the
+        processing. 
+    
+    Inputs: 
+        - Level 0 data in TSV format from multiple sensors.
+    Outputs:
+        - Level 1 data in MAT format, saved in designated folders based on 
+            data type (trend, interference, or geophysical).
+        
+    Note: The script utilizes various signal processing techniques such as 
+            lowpass filtering and uniform detrending to preprocess the data.
+            Additionally, it generates time series and frequency quicklook 
+            plots for each processed dataset.
+
+    Dependencies: 
+        - read_tsv.m: A custom function to read TSV files.
+        - uniform_detrend.m: A custom function to perform uniform detrending.
+%}
+
+
 close all
 clear all
 

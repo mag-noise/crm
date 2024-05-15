@@ -1,3 +1,28 @@
+%{
+    Function: read_tsv.m
+    Date/ Version: 08 May 2025 (v0.1)
+    Author: Matthew G. Finley (NASA GSFC/University of Maryland)
+    Contact: matthew.g.finley@nasa.gov
+
+    Description: 
+    This function reads data from a TSV file containing magnetic field
+    components recorded by multiple sensors. It extracts the X, Y, and Z
+    components for each sensor and returns them as matrices. Optionally, it
+    can display plots of the extracted data.
+
+    Inputs:
+    - filename: The filename of the TSV file containing the data.
+    - fs: The sampling frequency of the data.
+    - display: A flag indicating whether to display plots (1 for yes, 0 for no).
+
+    Outputs:
+    - X: Matrix containing the X-component of magnetic field data for multiple sensors.
+    - Y: Matrix containing the Y-component of magnetic field data for multiple sensors.
+    - Z: Matrix containing the Z-component of magnetic field data for multiple sensors.
+%}
+
+
+
 function [X, Y, Z] = read_tsv(filename, fs, display)
     data = tdfread(filename);
     

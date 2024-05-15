@@ -1,3 +1,20 @@
+%{
+    Titile: combine_measurements.m
+    Date/ Version: 08 May 2025 (v0.1)
+    Author: Matthew G. Finley (NASA GSFC/University of Maryland)
+    Contact: matthew.g.finley@nasa.gov
+
+    Description: 
+    This script combines measurements from different sources, applies necessary
+    processing steps such as filtering and detrending, and saves the processed
+    data to a MAT file.
+
+    Notes:
+    - Requires the functions 'read_tsv.m' and 'uniform_detrend.m' to be in the
+      same directory or in the MATLAB path.
+%}
+
+
 close all
 clear all
 

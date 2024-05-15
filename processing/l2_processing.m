@@ -1,3 +1,28 @@
+%{
+    Title: l2_processing.m
+    Date/ Version: 08 May 2025 (v0.1)
+    Author: Matthew G. Finley (NASA GSFC/University of Maryland)
+    Contact: matthew.g.finley@nasa.gov
+
+    Description: 
+        This MATLAB script processes Level 2 data for a specific application. 
+        It combines data from multiple sources, including trend, interference,
+        and geophysical data to generate Level 2 data products. The script 
+        performs data manipulation, combination, and visualization, 
+        including generating time series and frequency domain quicklooks.
+
+    Inputs: 
+        - Level 1 data files for trend, interference, and geophysical data.
+
+    Outputs: 
+        - Level 2 data files containing combined data products.
+        - Time and frequency domain quicklook images for each combination.
+
+    Note: 
+        - Ensure Level 1 data files are organized in the specified directory 
+            structure.
+%}
+
 close all
 clear all
 

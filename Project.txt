@@ -1,0 +1,420 @@
+This “Readme.txt” file was generated on 2024-05-13 by Allison Flores.
+
+-------------------
+
+GENERAL INFORMATION
+
+-------------------
+
+
+Code and Data for Enabling In-Situ Magnetic Interference Mitigation Algorithm Validation via a Laboratory-Generated Dataset
+
+
+Author Information
+
+
+Matthew G. Finley, PhD 
+University of Maryland
+matthew.g.finley@nasa.gov
+ORCID: 0000-0001-9557-7635
+
+Allison Flores
+The University of Iowa
+allison-flores@uiowa.edu
+ORCID: 0009-0009-1797-6492
+
+Katherine K. Morris
+The University of Iowa
+katherine-morris@uiowa.edu
+ORCID:
+
+Robert M. Broadfoot
+The University of Iowa
+robert-broadfoot@uiowa.edu
+ORCID:0000-0002-0271-861X
+
+Sam Hisel
+The University of Iowa
+samuel-hisel@uiowa.edu
+ORCID:
+
+Jason Homann
+The University of Iowa
+jason-homann@uiowa.edu
+ORCID:
+
+Principle Investigator:
+David Miles
+The University of Iowa
+david-miles@uiowa.edu
+ORCID: 0000-0002-4714-5966
+
+Ananya Sen Gupta
+The University of Iowa
+ananya-sengupta@uiowa.edu
+ORCID: 0000-0001-5255-8493 
+
+Date of data collection: May 16, 2023
+
+Information about funding sources or sponsorship that supported the collection of the data: 
+
+This work was supported in part by the US Air Force Office of Scientific Research under grant FA9550-21-1-0206. M.G.
+Finley was additionally supported for this work in part by the National Aeronautics and Space Administration HERMES
+mission and grants 80NSSC21M0180, 80NSSC23K1295. 
+
+--------------------------
+
+SHARING/ACCESS INFORMATION
+
+--------------------------
+
+Licenses/restrictions placed on the data, or limitations of reuse: Open Data Commons Attribution (ODC-By) V1.0
+
+
+Recommended citation for the data:
+
+Neha Paranjape, Stefan Strack, Hans-Joachim Lehmler, Jonathan A. Doorn; Dataset for Astrocyte Mitochondria are a Sensitive Target of PCB52 and its Human-relevant Metabolites; University of Iowa [Dataset]; 2024; DOI: 10.25820/data.007101.
+
+Publication linked to this data:
+
+[will be added to the readme when the manuscript is published]
+
+--------
+
+ABSTRACT	
+
+--------
+Magnetometer measurements are one of the critical components necessary to improve our understanding of the intricate physical processes coupling mass, momentum, and energy within near-Earth space and throughout our solar system. However, these measurements are often contaminated by stray magnetic fields from the spacecraft hosting the magnetic field sensors, and the data often requires the application of interference mitigation algorithms prior to scientific use. Rigorous numerical validation of these techniques can be challenging when they are applied to in-situ spaceflight data, as a ground truth for the local magnetic field is often unavailable. This manuscript introduces and details the generation of an open-source dataset designed to facilitate the assessment of interference mitigation techniques for magnetic field data collected during spaceflight missions. The dataset contains over 100 hours of
+magnetic field data comprising mixtures of near-DC trends, physically-synthesized interference, and pseudo-geophysical phenomena. These constituent source
+signals have been independently captured by four synchronized magnetometers sampling at high cadence and combined into 30-minute intervals of data representative of events and interference seen in historic missions. The physical location of the four magnetometers relative to the interference sources enables researchers to test their interference mitigation algorithms with various magnetometer suite configurations, and the dataset also provides a ground truth for the underlying interference signals, enabling rigorous quantification of the results of past, present, and future interference mitigation efforts.
+--------------------
+
+DATA & FILE OVERVIEW
+
+--------------------
+
+File list_filenames and filename description of all data files:
+
+--------------------
+Directory: LLevel_0_csv
+	Level_0_csv.txt					provides the information for the files within this directory
+	/geo
+		crm_geo_1_L0.csv
+		crm_geo_2_L0.csv
+		crm_geo_3_L0.csv
+		crm_geo_4_L0.csv
+		crm_geo_5_L0.csv
+		crm_geo_6_L0.csv		
+	/int
+		crm_int_1_L0.csv
+		crm_int_2_L0.csv
+		crm_int_3_L0.csv
+		crm_int_4_L0.csv
+		crm_int_5_L0.csv
+		crm_int_6_L0.csv
+		crm_int_7_L0.csv
+		crm_int_8_L0.csv
+	/trend
+		crm_trend_1_L0.csv
+		crm_trend_2_L0.csv
+		crm_trend_3_L0.csv
+		crm_trend_4_L0.csv
+		crm_trend_5_L0.csv
+
+Directory: Level_0_tsv
+	Level_0_tsv.txt				provides the information for the files within this directory
+	crm_wnoise_1.1.tsv
+	crm_wnoise_2.1.tsv	
+	/geo
+		crm_geo_1.1.tsv
+		crm_geo_2.1.tsv
+		crm_geo_3.1.tsv
+		crm_geo_4.1.tsv
+		crm_geo_5.1.tsv
+		crm_geo_6.1.tsv
+	/int
+		crm_int_1.1.tsv
+		crm_int_2.1.tsv
+		crm_int_3.1.tsv
+		crm_int_4.1.tsv
+		crm_int_5.1.tsv
+		crm_int_6.1.tsv
+		crm_int_7.1.tsv
+		crm_int_8.1.tsv
+	/trend
+		crm_trend_1.1.tsv
+		crm_trend_2.1.tsv
+		crm_trend_3.1.tsv
+		crm_trend_4.1.tsv
+		crm_trend_5.1.tsv
+
+Directory: Level_2_CDFs
+	L2_CDFs.txt
+	/L2_CDFs
+		CRM_combination_1_L2.cdf
+		CRM_combination_2_L2.cdf
+		CRM_combination_3_L2.cdf
+		CRM_combination_4_L2.cdf
+		CRM_combination_5_L2.cdf
+		CRM_combination_6_L2.cdf
+		CRM_combination_7_L2.cdf
+		CRM_combination_8_L2.cdf
+		CRM_combination_9_L2.cdf
+		CRM_combination_10_L2.cdf
+		CRM_combination_11_L2.cdf
+		CRM_combination_12_L2.cdf
+		CRM_combination_13_L2.cdf
+		CRM_combination_14_L2.cdf
+		CRM_combination_15_L2.cdf
+		CRM_combination_16_L2.cdf
+		CRM_combination_17_L2.cdf
+		CRM_combination_18_L2.cdf
+		CRM_combination_19_L2.cdf
+		CRM_combination_20_L2.cdf
+		CRM_combination_21_L2.cdf
+		CRM_combination_22_L2.cdf
+		CRM_combination_23_L2.cdf
+		CRM_combination_24_L2.cdf
+		CRM_combination_25_L2.cdf
+		CRM_combination_26_L2.cdf
+		CRM_combination_27_L2.cdf
+		CRM_combination_28_L2.cdf
+		CRM_combination_29_L2.cdf
+		CRM_combination_30_L2.cdf
+		CRM_combination_31_L2.cdf
+		CRM_combination_32_L2.cdf
+		CRM_combination_33_L2.cdf
+		CRM_combination_34_L2.cdf
+		CRM_combination_35_L2.cdf
+		CRM_combination_36_L2.cdf
+		CRM_combination_37_L2.cdf
+		CRM_combination_38_L2.cdf
+		CRM_combination_39_L2.cdf
+		CRM_combination_40_L2.cdf
+		CRM_combination_41_L2.cdf
+		CRM_combination_42_L2.cdf
+		CRM_combination_43_L2.cdf
+		CRM_combination_44_L2.cdf
+		CRM_combination_45_L2.cdf
+		CRM_combination_46_L2.cdf
+		CRM_combination_47_L2.cdf
+		CRM_combination_48_L2.cdf
+		CRM_combination_49_L2.cdf
+		CRM_combination_50_L2.cdf
+		CRM_combination_51_L2.cdf
+		CRM_combination_52_L2.cdf
+		CRM_combination_53_L2.cdf
+		CRM_combination_54_L2.cdf
+		CRM_combination_55_L2.cdf
+		CRM_combination_56_L2.cdf
+		CRM_combination_57_L2.cdf
+		CRM_combination_58_L2.cdf
+		CRM_combination_59_L2.cdf
+		CRM_combination_60_L2.cdf
+		CRM_combination_61_L2.cdf
+		CRM_combination_62_L2.cdf
+		CRM_combination_63_L2.cdf
+		CRM_combination_64_L2.cdf
+		CRM_combination_65_L2.cdf
+		CRM_combination_66_L2.cdf
+		CRM_combination_67_L2.cdf
+		CRM_combination_68_L2.cdf
+		CRM_combination_69_L2.cdf
+		CRM_combination_70_L2.cdf
+		CRM_combination_71_L2.cdf
+		CRM_combination_72_L2.cdf
+		CRM_combination_73_L2.cdf
+		CRM_combination_74_L2.cdf
+		CRM_combination_75_L2.cdf
+		CRM_combination_76_L2.cdf
+		CRM_combination_77_L2.cdf
+		CRM_combination_78_L2.cdf
+		CRM_combination_79_L2.cdf
+		CRM_combination_80_L2.cdf
+		CRM_combination_81_L2.cdf
+		CRM_combination_82_L2.cdf
+		CRM_combination_83_L2.cdf
+		CRM_combination_84_L2.cdf
+		CRM_combination_85_L2.cdf
+		CRM_combination_86_L2.cdf
+		CRM_combination_87_L2.cdf
+		CRM_combination_88_L2.cdf
+		CRM_combination_89_L2.cdf
+		CRM_combination_90_L2.cdf
+		CRM_combination_91_L2.cdf
+		CRM_combination_92_L2.cdf
+		CRM_combination_93_L2.cdf
+		CRM_combination_94_L2.cdf
+		CRM_combination_95_L2.cdf
+		CRM_combination_96_L2.cdf
+		CRM_combination_97_L2.cdf
+		CRM_combination_98_L2.cdf
+		CRM_combination_99_L2.cdf
+		CRM_combination_100_L2.cdf
+		CRM_combination_101_L2.cdf
+		CRM_combination_102_L2.cdf
+		CRM_combination_103_L2.cdf
+		CRM_combination_104_L2.cdf
+		CRM_combination_105_L2.cdf
+		CRM_combination_106_L2.cdf
+		CRM_combination_107_L2.cdf
+		CRM_combination_108_L2.cdf
+		CRM_combination_109_L2.cdf
+		CRM_combination_110_L2.cdf
+		CRM_combination_111_L2.cdf
+		CRM_combination_112_L2.cdf
+		CRM_combination_113_L2.cdf
+		CRM_combination_114_L2.cdf
+		CRM_combination_115_L2.cdf
+		CRM_combination_116_L2.cdf
+		CRM_combination_117_L2.cdf
+		CRM_combination_118_L2.cdf
+		CRM_combination_119_L2.cdf
+		CRM_combination_120_L2.cdf
+		CRM_combination_121_L2.cdf
+		CRM_combination_122_L2.cdf
+		CRM_combination_123_L2.cdf
+		CRM_combination_124_L2.cdf
+		CRM_combination_125_L2.cdf
+		CRM_combination_126_L2.cdf
+		CRM_combination_127_L2.cdf
+		CRM_combination_128_L2.cdf
+		CRM_combination_129_L2.cdf
+		CRM_combination_130_L2.cdf
+		CRM_combination_131_L2.cdf
+		CRM_combination_132_L2.cdf
+		CRM_combination_133_L2.cdf
+		CRM_combination_134_L2.cdf
+		CRM_combination_135_L2.cdf
+		CRM_combination_136_L2.cdf
+		CRM_combination_137_L2.cdf
+		CRM_combination_138_L2.cdf
+		CRM_combination_139_L2.cdf
+		CRM_combination_140_L2.cdf
+		CRM_combination_141_L2.cdf
+		CRM_combination_142_L2.cdf
+		CRM_combination_143_L2.cdf
+		CRM_combination_144_L2.cdf
+		CRM_combination_145_L2.cdf
+		CRM_combination_146_L2.cdf
+		CRM_combination_147_L2.cdf
+		CRM_combination_148_L2.cdf
+		CRM_combination_149_L2.cdf
+		CRM_combination_150_L2.cdf
+		CRM_combination_151_L2.cdf
+		CRM_combination_152_L2.cdf
+		CRM_combination_153_L2.cdf
+		CRM_combination_154_L2.cdf
+		CRM_combination_155_L2.cdf
+		CRM_combination_156_L2.cdf
+		CRM_combination_157_L2.cdf
+		CRM_combination_158_L2.cdf
+		CRM_combination_159_L2.cdf
+		CRM_combination_160_L2.cdf
+		CRM_combination_161_L2.cdf
+		CRM_combination_162_L2.cdf
+		CRM_combination_163_L2.cdf
+		CRM_combination_164_L2.cdf
+		CRM_combination_165_L2.cdf
+		CRM_combination_166_L2.cdf
+		CRM_combination_167_L2.cdf
+		CRM_combination_168_L2.cdf
+		CRM_combination_169_L2.cdf
+		CRM_combination_170_L2.cdf
+		CRM_combination_171_L2.cdf
+		CRM_combination_172_L2.cdf
+		CRM_combination_173_L2.cdf
+		CRM_combination_174_L2.cdf
+		CRM_combination_175_L2.cdf
+		CRM_combination_176_L2.cdf
+		CRM_combination_177_L2.cdf
+		CRM_combination_178_L2.cdf
+		CRM_combination_179_L2.cdf
+		CRM_combination_180_L2.cdf
+		CRM_combination_181_L2.cdf
+		CRM_combination_182_L2.cdf
+		CRM_combination_183_L2.cdf
+		CRM_combination_184_L2.cdf
+		CRM_combination_185_L2.cdf
+		CRM_combination_186_L2.cdf
+		CRM_combination_187_L2.cdf
+		CRM_combination_188_L2.cdf
+		CRM_combination_189_L2.cdf
+		CRM_combination_190_L2.cdf
+		CRM_combination_191_L2.cdf
+		CRM_combination_192_L2.cdf
+		CRM_combination_193_L2.cdf
+		CRM_combination_194_L2.cdf
+		CRM_combination_195_L2.cdf
+		CRM_combination_196_L2.cdf
+		CRM_combination_197_L2.cdf
+		CRM_combination_198_L2.cdf
+		CRM_combination_199_L2.cdf
+		CRM_combination_200_L2.cdf
+		CRM_combination_201_L2.cdf
+		CRM_combination_202_L2.cdf
+		CRM_combination_203_L2.cdf
+		CRM_combination_204_L2.cdf
+		CRM_combination_205_L2.cdf
+		CRM_combination_206_L2.cdf
+		CRM_combination_207_L2.cdf
+		CRM_combination_208_L2.cdf
+		CRM_combination_209_L2.cdf
+		CRM_combination_210_L2.cdf
+		CRM_combination_211_L2.cdf
+		CRM_combination_212_L2.cdf
+		CRM_combination_213_L2.cdf
+		CRM_combination_214_L2.cdf
+		CRM_combination_215_L2.cdf
+		CRM_combination_216_L2.cdf
+		CRM_combination_217_L2.cdf
+		CRM_combination_218_L2.cdf
+		CRM_combination_219_L2.cdf
+		CRM_combination_220_L2.cdf
+		CRM_combination_221_L2.cdf
+		CRM_combination_222_L2.cdf
+		CRM_combination_223_L2.cdf
+		CRM_combination_224_L2.cdf
+		CRM_combination_225_L2.cdf
+		CRM_combination_226_L2.cdf
+		CRM_combination_227_L2.cdf
+		CRM_combination_228_L2.cdf
+		CRM_combination_229_L2.cdf
+		CRM_combination_230_L2.cdf
+		CRM_combination_231_L2.cdf
+		CRM_combination_232_L2.cdf
+		CRM_combination_233_L2.cdf
+		CRM_combination_234_L2.cdf
+		CRM_combination_235_L2.cdf
+		CRM_combination_236_L2.cdf
+		CRM_combination_237_L2.cdf
+		CRM_combination_238_L2.cdf
+		CRM_combination_239_L2.cdf
+		CRM_combination_240_L2.cdf
+
+
+Directory: Project_Code
+	Project_Code.txt					Provides descriptions of each of the scripts and functions
+	l1_processing.m
+	l2_processing.m
+	combine_measurements.m
+	read_tsv.m
+	uniform_detrend.m
+
+Directory: Sample_Code
+	CRM_combination_1_L2.cdf
+	example.py
+	output_image.png
+--------------------
+
+Methodological Information
+
+--------------------
+
+The dataset's physical setup includes commercially available magnetoresistive vector magnetometers synchronized and sampled at 200 Hz. A 2-meter cubic 3-axis Merritt coil system simulates large near-DC magnetic fields, while electric motors with ferromagnetic plates simulate spacecraft reaction wheels. The setup allows for the generation of various interference sources representative of spaceflight conditions.
+
+The dataset captures near-DC trends, simulated interference, and pseudo-geophysical signals. Stimuli applied to the Merritt coil system and motors generate these signals, providing ground truth for interference and geophysical fields. Data collection details, including applied stimuli and signal characteristics, are provided, ensuring reproducibility and standardization.
+
+Data processing involves filtering, truncation, and combination to convert raw data into usable formats. Level 1 processing applies appropriate filtering to each data category, while Level 2 processing combines data subsets to create intervals for interference mitigation algorithm validation. Data is stored in MATLAB v7 format (.mat) and Common Data Format (.cdf) for accessibility.
+
+

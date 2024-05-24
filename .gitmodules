@@ -1,0 +1,4 @@
+[submodule "deps/mapCDF"]
+	path = deps/mapCDF
+	url = https://github.com/mag-noise/mapCDF.git
+	branch = main

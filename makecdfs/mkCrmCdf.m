@@ -252,20 +252,33 @@ function [...
 		 'from 0.75 Hz to 20 Hz.Stimulus applied at ~8, 16, and 24-min']}...
 	};
 
-	lName = split(cName, '_');
-	if length(lName) < 5
-		throw(MException('mkCrmCdf:BadName', ['File ' cInFile 
-			' has less then five "_" separated components in the name']));
-	end
-	% nComboId = str2num(lName{2}); no longer have comboId in the name of file                                          
-	
+    lName = split(cName, '_');
+    if length(lName) < 5
+        throw(MException('mkCrmCdf:BadName', ['File ' cInFile
+            ' has less then five "_" separated components in the name']));
+    end
+    % The comboID was generated using nested for loops. g + 6*(i-1) +
+    % 48*(t-1)
+    % nComboId = str2num(lName{2}); combo no longer in ID
+
 	tData = load(cInFile);  % Load the data
 	
 	% Get the three primary dataset IDs
-	nTrendId = sourceId_(tData.l2_sourcefiles.trend_source);
-	nInterId = sourceId_(tData.l2_sourcefiles.int_source);
-	nGeoId = sourceId_(tData.l2_sourcefiles.geo_source);
-	
+	%nTrendId = sourceId_(tData.l2_sourcefiles.trend_source);
+	%nInterId = sourceId_(tData.l2_sourcefiles.int_source);
+	%nGeoId = sourceId_(tData.l2_sourcefiles.geo_source);
+	nGeoId = str2double(lName{2}(1,2));
+    nInterId = str2double(lName{3}(1,2));
+    nTrendId = str2double(lName{4}(1,2));
+    % The combination value can be calucalted by the equation below
+    nComboId = nGeoId + 6*(nInterId-1) + 48*(nTrendId-1); 
+    
+    % TODO: Can change this so that it just reads the info without having
+    % to check the files as the nID for each signal is the row in each of
+    % the dictionaries with the description.
+    
+    % May still be valuable to throw exceptions if the file does not match
+    % the nID 
 	for i = 1:length(lTrend) 
 		if isequal(tData.l2_sourcefiles.trend_source, lTrend{i}{1})
 			cTrendInfo = lTrend{i}{2};

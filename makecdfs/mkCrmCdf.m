@@ -309,15 +309,17 @@ function [...
 	end
 end
 
+% No longer need to read from the source files the id numbers as it is in
+% the file name can instead make this a check to make sure the Id matches
+% the source file name
 function [nSrcId] = sourceId_(cPrimaryFile)
-	
 	lSrcName = split(cPrimaryFile, '_');
 	if length(lSrcName) < 3
 		throw(MExecption('mkCrmCdf:BadSrcName', [
 			'Filename pattern for source ' cPrimaryFile ' is unrecognized'
 		]));		
 	end
-
+    
 	nSrcId = str2num(lSrcName{3});
 end
 

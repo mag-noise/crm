@@ -253,11 +253,11 @@ function [...
 	};
 
 	lName = split(cName, '_');
-	if length(lName) < 3
+	if length(lName) < 5
 		throw(MException('mkCrmCdf:BadName', ['File ' cInFile 
-			' has less then three "_" separated components in the name']));
+			' has less then five "_" separated components in the name']));
 	end
-	nComboId = str2num(lName{2});
+	% nComboId = str2num(lName{2}); no longer have comboId in the name of file                                          
 	
 	tData = load(cInFile);  % Load the data
 	

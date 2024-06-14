@@ -63,7 +63,7 @@ function [cOutFile] = mkCrmCdf(cInFile, cOutDir)
 	
 	out.attr('PI_affiliation') = {'The University of Iowa'};
 	out.attr('PI_name') = {'Miles, D.'};
-	out.attr('Project') = {'Constellation Ready Mag'};
+	out.attr('Project') = {'Constellation Ready Mag'};GeoSource
 	out.attr('Rules_of_use') = {...
 		['Cite Finley, M.G. et. al. 2023 in publications that make use of this dataset or its derivatives.']
 	};
@@ -97,17 +97,17 @@ function [cOutFile] = mkCrmCdf(cInFile, cOutDir)
 	% TODO: Find out when the files were generated
 	t0 = datetime('2023-04-15T00:00:00.000Z', 'TimeZone', 'UTCLeapSeconds');
 	
-	N = height(tData.L2_Combined.L2_combined_1);
+	N = height(tData.l2_combined.l2_combined_m1);
 	aTime = t0 + seconds( (1:N)/nHertz );
 	out.mkVar('Epoch', aTime, cU, 'UTC', cD, 'Measurement Time', cV, 'support_data');
 	
 	% Combined data
-	aFields = fieldnames(tData.L2_Combined);
+	aFields = fieldnames(tData.l2_combined);
 	for iMag = 1:numel(aFields)
 		% Question, what is a good name to ID each magnetometer?
 		cDesc = sprintf('Combined Signal %d @ Mag%d', nComboId, iMag);
 		out.mkVar(...
-			sprintf('CombinedMag%d', iMag), tData.L2_Combined.(aFields{iMag})', ...
+			sprintf('CombinedMag%d', iMag), tData.l2_combined.(aFields{iMag})', ...
 			cU, 'nT', cD, cDesc, cF, cDesc, cMax, rMax, cMin, rMin, cFill, rNan, ...
 			cD0, 'Epoch', cL1, sprintf('LblCombinedMag%d', iMag), cV, 'data', ...
 			cN, ['The full measured signal: Interference + Geophysical '...

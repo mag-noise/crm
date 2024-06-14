@@ -56,9 +56,9 @@ function [cOutFile] = mkCrmCdf(cInFile, cOutDir)
 	};
 
 	out.attr('Parents') = {[...
-		tData.L2_SourceFiles.TrendSource ', ' ...
-		tData.L2_SourceFiles.IntSource ', ' ...
-		tData.L2_SourceFiles.GeoSource ...
+		tData.l2_sourcefiles.trend_source ', ' ...
+		tData.l2_sourcefiles.int_source ', ' ...
+		tData.l2_sourcefiles.geo_source ...
 	]};
 	
 	out.attr('PI_affiliation') = {'The University of Iowa'};
@@ -262,37 +262,37 @@ function [...
 	tData = load(cInFile);  % Load the data
 	
 	% Get the three primary dataset IDs
-	nTrendId = sourceId_(tData.L2_SourceFiles.TrendSource);
-	nInterId = sourceId_(tData.L2_SourceFiles.IntSource);
-	nGeoId = sourceId_(tData.L2_SourceFiles.GeoSource);
+	nTrendId = sourceId_(tData.l2_sourcefiles.trend_source);
+	nInterId = sourceId_(tData.l2_sourcefiles.int_source);
+	nGeoId = sourceId_(tData.l2_sourcefiles.geo_source);
 	
 	for i = 1:length(lTrend) 
-		if isequal(tData.L2_SourceFiles.TrendSource, lTrend{i}{1})
+		if isequal(tData.l2_sourcefiles.trend_source, lTrend{i}{1})
 			cTrendInfo = lTrend{i}{2};
 			break;
 		end
 	end
 	for i = 1:length(lInter) 
-		if isequal(tData.L2_SourceFiles.IntSource, lInter{i}{1})
+		if isequal(tData.l2_sourcefiles.int_source, lInter{i}{1})
 			cInterInfo = lInter{i}{2};
 			break;
 		end
 	end
 	for i = 1:length(lGeo) 
-		if isequal(tData.L2_SourceFiles.GeoSource, lGeo{i}{1})
+		if isequal(tData.l2_sourcefiles.geo_source, lGeo{i}{1})
 			cGeoInfo = lGeo{i}{2};
 			break;
 		end
 	end
 	
 	if isempty(cTrendInfo)
-		throw(MException('mkCrmCdf:UnkSrc',['Unknown Near-DC Trend file "' tData.L2_SourceFiles.TrendSource '"' ]));
+		throw(MException('mkCrmCdf:UnkSrc',['Unknown Near-DC Trend file "' tData.l2_sourcefiles.trend_source '"' ]));
 	end
 	if isempty(cInterInfo) 
-		throw(MException('mkCrmCdf:UnkSrc',['Unknown Interference file "' tData.L2_SourceFiles.IntSource '"' ]));
+		throw(MException('mkCrmCdf:UnkSrc',['Unknown Interference file "' tData.l2_sourcefiles.int_source '"' ]));
 	end
 	if isempty(cGeoInfo)
-		throw(MException('mkCrmCdf:UnkSrc',['Unknown GeoPhysical file "' tData.L2_SourceFiles.GeoSource '".'] ));
+		throw(MException('mkCrmCdf:UnkSrc',['Unknown GeoPhysical file "' tData.l2_sourcefiles.geo_source '".'] ));
 	end
 end
 

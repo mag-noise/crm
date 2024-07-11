@@ -11,9 +11,6 @@ function [cOutFile] = mkCrmCdf(cInFile, cOutDir)
 %   cOutFile (char vec)
 %     The name of the CDF file created.
 %
-% TODO: 
-%   1. Get the date on which Matt's files were created and update the
-%      Logical_file_id global file attribute.
 %   
 %   2. Find out what the different combination numbers mean and convey
 %      this meaning in global attributes and varible descriptions
@@ -24,8 +21,10 @@ function [cOutFile] = mkCrmCdf(cInFile, cOutDir)
 	[nComboId, nTrendId, nInterId, nGeoId, ...
 		cTrendInfo, cInterInfo, cGeoInfo, tData] = loadL2_(cInFile);
 	
-	out = cdf.CDF();  % Empty CDF object
-	
+    out = cdf.CDF();  % Empty CDF object
+	%out = cdflib.create(getFileName(cInFile));
+
+
 	% Write in global identifing attributes
 	out.attr('Data_type') = {'H0>High Resolution Data'};
 	out.attr('Data_version') = {1};
@@ -63,13 +62,13 @@ function [cOutFile] = mkCrmCdf(cInFile, cOutDir)
 	
 	out.attr('PI_affiliation') = {'The University of Iowa'};
 	out.attr('PI_name') = {'Miles, D.'};
-	out.attr('Project') = {'Constellation Ready Mag'};GeoSource
+	out.attr('Project') = {'Constellation Ready Mag'};
 	out.attr('Rules_of_use') = {...
-		['Cite Finley, M.G. et. al. 2023 in publications that make use of this dataset or its derivatives.']
+		['Cite Finley, M.G. et. al. 2024 in publications that make use of this dataset or its derivatives.']
 	};
 
 	out.attr('Source_name') = {'CRM>Constellation Ready Magnetometers'};
-	out.attr('TEXT') = {'DOI of Journal article goes here'};
+	out.attr('TEXT') = {'doi.org/10.5194/egusphere-2024-87'};
 	out.attr('Time_resolution') = {sprintf('%d Hz', nHertz)};
 	
 	out.attr('TITLE') = {'CRM - Interference Benchmarks'};
@@ -94,24 +93,24 @@ function [cOutFile] = mkCrmCdf(cInFile, cOutDir)
 	% time scale (changed my mind, use rough date of data generation)
 	%t0 = datetime('2000-01-01T11:58:55.816Z', 'TimeZone', 'UTCLeapSeconds');
 	
-	% TODO: Find out when the files were generated
+	% Time when files were generated
 	t0 = datetime('2023-04-15T00:00:00.000Z', 'TimeZone', 'UTCLeapSeconds');
 	
-	N = height(tData.l2_combined.l2_combined_m1);
+	N = height(transpose(tData.l2_combined.l2_combined_m1));
 	aTime = t0 + seconds( (1:N)/nHertz );
 	out.mkVar('Epoch', aTime, cU, 'UTC', cD, 'Measurement Time', cV, 'support_data');
 	
 	% Combined data
 	aFields = fieldnames(tData.l2_combined);
 	for iMag = 1:numel(aFields)
-		% Question, what is a good name to ID each magnetometer?
+		
 		cDesc = sprintf('Combined Signal %d @ Mag%d', nComboId, iMag);
 		out.mkVar(...
-			sprintf('CombinedMag%d', iMag), tData.l2_combined.(aFields{iMag})', ...
+			sprintf('CombinedMag%d', iMag), tData.l2_combined.(aFields{iMag}), ...
 			cU, 'nT', cD, cDesc, cF, cDesc, cMax, rMax, cMin, rMin, cFill, rNan, ...
 			cD0, 'Epoch', cL1, sprintf('LblCombinedMag%d', iMag), cV, 'data', ...
-			cN, ['The full measured signal: Interference + Geophysical '...
-			'Signal + Near-DC trend'] ...
+			cN, sprintf(['The full measured signal: Interference %d + Geophysical ' ...
+            'Signal %d + Near-DC trend %d'], nInterId, nGeoId, nTrendId) ...
 		);
 		
 		cMag = sprintf('Mag%d', iMag);
@@ -129,7 +128,7 @@ function [cOutFile] = mkCrmCdf(cInFile, cOutDir)
 		
 		cDesc = sprintf('Geophysical Signal %d @ Mag%d', nGeoId, iMag);
 		out.mkVar(...
-			sprintf('GeoSignalMag%d', iMag), tData.l2_geo.(aFields{iMag})', ...
+			sprintf('GeoSignalMag%d', iMag), tData.l2_geo.(aFields{iMag}), ...
 			cU, 'nT', cD, cDesc, cF, cDesc, cMax, rMax, cMin, rMin, cFill, rNan, ...
 			cD0, 'Epoch', cL1, sprintf('LblGeoSignalMag%d', iMag), cV, 'data', ...
 			cN, ['The external geophysical signal only. ' cGeoInfo] ...
@@ -150,7 +149,7 @@ function [cOutFile] = mkCrmCdf(cInFile, cOutDir)
 		
 		cDesc = sprintf('Local Interference Noise %d @ Mag%d', nInterId, iMag);
 		out.mkVar(...
-			sprintf('InterMag%d', iMag), tData.l2_int.(aFields{iMag})', ...
+			sprintf('InterMag%d', iMag), tData.l2_int.(aFields{iMag}), ...
 			cU, 'nT', cD, cDesc, cF, cDesc, cMax, rMax, cMin, rMin, cFill, rNan, ...
 			cD0, 'Epoch', cL1, sprintf('LblInterMag%d', iMag), cV, 'data', ...
 			cN, ['The local interference noise only. ' cInterInfo] ...
@@ -171,7 +170,7 @@ function [cOutFile] = mkCrmCdf(cInFile, cOutDir)
 		
 		cDesc = sprintf('Near DC Trend %d @ Mag%d', nTrendId ,iMag);
 		out.mkVar(...
-			sprintf('TrendMag%d', iMag), tData.l2_trend.(aFields{iMag})', ...
+			sprintf('TrendMag%d', iMag), tData.l2_trend.(aFields{iMag}), ...
 			cU, 'nT', cD, cDesc, cF, cDesc, cMax, rMax, cMin, rMin, cFill, rNan, ...
 			cD0, 'Epoch', cL1, sprintf('LblTrendMag%d', iMag), cV, 'data', ...
 			cN, ['The near DC trend only. ' cTrendInfo] ...
@@ -188,17 +187,23 @@ function [cOutFile] = mkCrmCdf(cInFile, cOutDir)
 	
 	[cDir, cBase, ~] = fileparts(cInFile);
 	if isempty(cDir) 
-		cOutFile = ['CRM_' cBase '.cdf'];
+		cOutFile = [cBase '.cdf'];
 	else
-		cOutFile = [cOutDir filesep filesep 'CRM_' cBase '.cdf'];
+		cOutFile = [cOutDir filesep filesep cBase '.cdf'];
 	end
-	fprintf(['Writing file ' cOutFile '...' ]);
+	fprintf(['Writing file ' num2str(nComboId) '...' ]);
 	out.save(cOutFile);
 	fprintf(' done.\n');
 	
 end
 
 %% Supporting functions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%
+function name = getFileName(cInFile)
+    % Get the proper name for the file
+    t1 = strsplit(cInFile, '\');
+    t2 = strsplit(t1{1,length(t1)},'.');
+    name = t2{1,1};
+end
 
 function [...
 	nComboId, nTrendId, nInterId, nGeoId, cTrendInfo, cInterInfo, cGeoInfo, tData...
@@ -307,19 +312,5 @@ function [...
 	if isempty(cGeoInfo)
 		throw(MException('mkCrmCdf:UnkSrc',['Unknown GeoPhysical file "' tData.l2_sourcefiles.geo_source '".'] ));
 	end
-end
-
-% No longer need to read from the source files the id numbers as it is in
-% the file name can instead make this a check to make sure the Id matches
-% the source file name
-function [nSrcId] = sourceId_(cPrimaryFile)
-	lSrcName = split(cPrimaryFile, '_');
-	if length(lSrcName) < 3
-		throw(MExecption('mkCrmCdf:BadSrcName', [
-			'Filename pattern for source ' cPrimaryFile ' is unrecognized'
-		]));		
-	end
-    
-	nSrcId = str2num(lSrcName{3});
 end
 

@@ -33,7 +33,6 @@ Here is a brief overview of the directory structure of this project:
 ├── .gitignore # Git ignore file
 ├── .gitmodules # Git submodules configuration
 ├── LICENSE # License file
-└── Project.txt # Detailed project description
 ```
 
 
@@ -45,7 +44,6 @@ Here is a brief overview of the directory structure of this project:
 - **.gitignore**: Specifies files to be ignored by Git.
 - **.gitmodules**: Configuration for Git submodules.
 - **LICENSE**: The license for the project.
-- **Project.txt**: A detailed description of the project.
 
 ## Cloning the Repository
 

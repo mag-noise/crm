@@ -58,7 +58,9 @@ git submodule update --init --recursive
 ```
 
 ## Dependencies and Submodules
-This project uses submodules to manage dependencies. Ensure that you have initialized and updated the submodules as described above. 
+This project uses submodules to manage dependencies. Ensure that you have initialized and updated the submodules as described above.
+
+Requiers: https://github.com/mag-noise/mapCDF for CDF generation
 
 ## Usage
 Provide detailed instructions on how to use your project. Here’s an example:
@@ -70,8 +72,14 @@ Provide detailed instructions on how to use your project. Here’s an example:
 git submodule update --init --recursive
 ```
 2. Running Examples
-3. Processing Data
-4. Creating CDFs
+ - Run example.py script and verify the output matches output.png
+4. Processing Data
+ - Download _tsv folder in the data repository
+ - Run level1_processing.py
+ - Run level2_processing.py
+5. Creating CDFs
+ - Change pathing within code structure to point to level2 .mat files as input path
+ - Change pathing within code structure to where CDFs should be generated as output path
 
 ## License
 This project is licensed under the MIT License.
@@ -90,6 +98,7 @@ This repository is archived and assigned a DOI via Zenodo for reproducibility an
 
 - **GitHub Repository**: https://github.com/mag-noise/crm/
 - **Zenodo DOI**: https://zenodo.org/doi/10.5281/zenodo.12754307
-- **Article DOI**: doi.org/10.5194/egusphere-2024-87 
+- **Article DOI**: doi.org/10.5194/egusphere-2024-87
+- **Data Repository**: <[To be Added]>
 
 You can cite this repository using the following DOI: <[To be Added]>

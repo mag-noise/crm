@@ -101,4 +101,4 @@ This repository is archived and assigned a DOI via Zenodo for reproducibility an
 - **Article DOI**: doi.org/10.5194/egusphere-2024-87
 - **Data Repository**: <[To be Added]>
 
-You can cite this repository using the following DOI: <[To be Added]>
+You can cite this repository using the following DOI: [![DOI](https://zenodo.org/badge/803618730.svg)](https://zenodo.org/doi/10.5281/zenodo.12754307)
